@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<head>
+<title>NYTimes Technology Org Chart: Employees List</title>
+</head>
+	
+<body>
+
+{% if employee_list %}
+	<ul>
+    {% for employee in employee_list %}
+    <li>{{ employee.id }} : <a href="/orgchart/{{ employee.id }}">{{ employee.full_name }}</a>, <font color="blue"><i>{{ employee.job_title }}</i></font></li>
+    {% endfor %}
+	</ul>
+{% else %}
+	<font color="red"><i>No Emmployees are available.<i></font>
+{% endif %}
+
+</body>
+</html>
