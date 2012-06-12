@@ -5,10 +5,11 @@ from django.db.models import Q
 
 # Create your views here.
 
-def home(request):
-    return HttpResponse("Peopleware by Rajiv: Organization Chart Management")
-    
-
+def homepage(request):
+	t = loader.get_template('orgchart/homepage.html')
+	c = Context({
+	})
+	return HttpResponse(t.render(c))
 
 def byEmployee(request):
 	employee_list = Employee.objects.all()
@@ -17,8 +18,7 @@ def byEmployee(request):
 	'employee_list': employee_list,
 	})
 	return HttpResponse(t.render(c))
-	
-	
+		
 def byReportingRelationship(request, manager_id):
 	reporting_relationship_list = ReportingRelationship.objects.filter(Q(supervisor_id = manager_id) | Q(employee_id = manager_id))
 	primary_supervisor_id = ReportingRelationship.objects.filter(Q(employee_id = manager_id))[0].supervisor_id

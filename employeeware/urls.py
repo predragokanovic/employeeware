@@ -5,8 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	# Examples:
-	url(r'^$', 'orgchartapp.views.home'),
+
+	url(r'^$', 'orgchartapp.views.homepage'),
 	url(r'^employees/', 'orgchartapp.views.byEmployee'),	
 	url(r'^orgchart/(?P<manager_id>\d+)$', 'orgchartapp.views.byReportingRelationship'),
 
@@ -16,10 +16,9 @@ urlpatterns = patterns('',
 	(r'^reset/done/$', 'django.contrib.auth.views.password_reset_complete'),
 
 	# Uncomment the admin/doc line below to enable admin documentation:
-	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+	#url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
 	# Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
-	
-	
+		
 )
