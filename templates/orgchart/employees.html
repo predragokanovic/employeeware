@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 
 <head>
-<title>NYTimes Technology Org Chart: Employees List</title>
+<title>EmployeeWare: Browse Employees List</title>
+<style type="text/css">
+<!--
+a:link {text-decoration: none}
+a:visited {text-decoration: none}
+a:active {text-decoration: none}
+a:hover {text-decoration: underline}
+-->
+</style>
 </head>
 	
 <body>
 
+<h1>EmployeeWare HR Software</h1>
+<h2>Employees List</h2>
+<p>Click on an employee to view them in the org chart.</p>
 {% if employee_list %}
 	<ul>
     {% for employee in employee_list %}
-    <li>{{ employee.id }} : <a href="/orgchart/{{ employee.id }}">{{ employee.full_name }}</a>, <font color="blue"><i>{{ employee.job_title }}</i></font></li>
+    <li><a href="/orgchart/{{ employee.id }}">{{ employee.full_name }}</a>, <em>{{ employee.job_title }}</em></li>
     {% endfor %}
 	</ul>
+    <div>Number of employees: {{ employee_list|length }}</div>
 {% else %}
 	<font color="red"><i>No Emmployees are available.<i></font>
 {% endif %}
-
 </body>
 </html>
