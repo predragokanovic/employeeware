@@ -28,7 +28,7 @@
           [
           {
           	v: '{{ reporting_relationship.employee.id }}',
-          	f: '<a href="/orgchart/{{ reporting_relationship.employee.id }}">{{ reporting_relationship.employee.full_name }}</a><br/><font color="blue"><i>{{ reporting_relationship.employee.job_title }}</i></font><br />{% if reporting_relationship.employee.contractor %}[c]{% endif %}{% if reporting_relationship.employee.part_time_status %}[p]{% endif %}'
+          	f: '<a href="/orgchart/{{ reporting_relationship.employee.id }}">{{ reporting_relationship.employee.full_name }}</a><br/><font color="blue"><i>{{ reporting_relationship.employee.job_title }}</i></font><br />{% if reporting_relationship.employee.contractor %}(c){% endif %}{% if reporting_relationship.employee.part_time_status %}(p){% endif %}'
           },
           '{{ reporting_relationship.supervisor_id }}', null
           ],
@@ -56,8 +56,8 @@
     <div>
     <em>Legend:</em><br />
     <font size="+3"><strong>&uarr;</strong></font> : Up one level<br />
-    [p] = Part-Time Employee<br />
-    [c] = Contractor / Consultant<br />
+    (p) = Part-Time Employee<br />
+    (c) = Contractor / Consultant<br />
     </div>
   </body>
 </html>
