@@ -19,7 +19,7 @@
         // Create and populate the data table.
         var data = google.visualization.arrayToDataTable([
           ['Name', 'Manager', 'Tooltip'],
-          ['NY Times Technology', null, null],
+          ['Org Chart', null, null],
           [{v: '{{ primary_supervisor_id }}', f: '<a href="/orgchart/{{ primary_supervisor_id }}"><font size="+3"><strong>&uarr;</strong></font></a>'}, null, null],
 {% if reporting_relationship_list %}
     {% for reporting_relationship in reporting_relationship_list %}
