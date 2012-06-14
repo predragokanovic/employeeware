@@ -26,7 +26,7 @@
           [
           {
           	v: '{{ reporting_relationship.employee.id }}',
-          	f: '<a href="/orgchart/{{ reporting_relationship.employee.id }}">{{ reporting_relationship.employee.full_name }}</a><br/><font color="blue"><i>{{ reporting_relationship.employee.job_title }}</i></font><br />{% if reporting_relationship.employee.contractor %}(c){% endif %}{% if reporting_relationship.employee.part_time_status %}(p){% endif %}'
+          	f: '{% if reporting_relationship.dotted %}(...)<br />{% endif %}<a href="/orgchart/{{ reporting_relationship.employee.id }}">{{ reporting_relationship.employee.full_name }}</a><br/><font color="blue"><i>{{ reporting_relationship.employee.job_title }}</i></font><br />{% if reporting_relationship.employee.contractor %}(c){% endif %}{% if reporting_relationship.employee.part_time_status %}(p){% endif %}'
           },
           '{{ reporting_relationship.supervisor_id }}', null
           ],
@@ -56,6 +56,7 @@
     <table><tr><td>
     <em>Legend:</em><br />
     <font size="+3"><strong>&uarr;</strong></font> : Up one level<br />
+    (...) = Dotted Reporting<br />
     (p) = Part-Time Employee<br />
     (c) = Contractor / Consultant<br />
     </td></tr></table>
