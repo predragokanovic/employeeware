@@ -17,6 +17,7 @@ class ReportingRelationship(models.Model):
 	employee      = models.ForeignKey(Employee)
 	supervisor    = models.ForeignKey(Employee, related_name='+')
 	dotted        = models.BooleanField(default=False)
+#	assistant     = models.BooleanField(default=False)
 	
 	def employee_full_name(self):
 		return self.employee.full_name

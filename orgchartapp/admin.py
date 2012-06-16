@@ -24,7 +24,7 @@ class ReportingRelationshipAdmin(admin.ModelAdmin):
 	list_display = ('employee_full_name', 'employee_job_title', 'supervisor_full_name', 'dotted')
 	list_filter  = ['dotted']
 	raw_id_fields = ('employee', 'supervisor')
-#	search_fields = ['employee.full_name', 'employee.job_title']
+	search_fields = ['employee__full_name', 'employee__job_title', 'supervisor__full_name']
 
 admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(ReportingRelationship, ReportingRelationshipAdmin)
