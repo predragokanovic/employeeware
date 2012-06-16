@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-
-<head>
-<title>EmployeeWare: Open Source HR Software</title>
-<style type="text/css">
-<!--
-a:link {text-decoration: none}
-a:visited {text-decoration: none}
-a:active {text-decoration: none}
-a:hover {text-decoration: underline}
--->
-</style>
-</head>
-	
-<body>
-
+{% extends "base.html" %}
+{% block title %}EmployeeWare: Open Source HR Software{% endblock %}
+{% block content %}
 <h1>EmployeeWare: Open Source HR Software</h1>
 
 <h2>Use the software</h2>
@@ -70,11 +57,4 @@ a:hover {text-decoration: underline}
 	</li>
 
 </ul>
-
-<hr />
-<p align="right">
-<font size="-1">Powered by open source HR Software from <a href="http://www.employeeware.org/">EmployeeWare.org</a></font>
-</p>
-
-</body>
-</html>
+{% endblock %}

@@ -1,37 +1,19 @@
-<!DOCTYPE html>
-
-<head>
-<title>EmployeeWare: Browse Employees List</title>
-<style type="text/css">
-<!--
-a:link {text-decoration: none}
-a:visited {text-decoration: none}
-a:active {text-decoration: none}
-a:hover {text-decoration: underline}
--->
-</style>
-</head>
-	
-<body>
-
+{% extends "base.html" %}
+{% block title %}EmployeeWare: Browse Employees List{% endblock %}
+{% block content %}
 <h1>EmployeeWare HR Software</h1>
 <h2>Employees List</h2>
 <p>Click on an employee to view them in the org chart.</p>
 {% if employee_list %}
 	<ul>
-    {% for employee in employee_list %}
-    <li><a href="/orgchart/{{ employee.id }}">{{ employee.full_name }}</a>, <em>{{ employee.job_title }}</em></li>
-    {% endfor %}
+	{% for employee in employee_list %}
+	<li><a href="/orgchart/{{ employee.id }}">{{ employee.full_name }}</a>, <em>{{ employee.job_title }}</em>
+	&nbsp;&nbsp;<font size="-1"><a href="/admin/orgchartapp/employee/{{ employee.id }}">[edit]</a></font>
+	</li>
+	{% endfor %}
 	</ul>
-    <div>Number of employees: {{ employee_list|length }}</div>
+	<div>Number of employees: {{ employee_list|length }}</div>
 {% else %}
 	<font color="red"><i>No Emmployees are available.<i></font>
 {% endif %}
-
-<hr />
-<p align="right">
-<font size="-1">Powered by open source HR Software from <a href="http://www.employeeware.org/">EmployeeWare.org</a></font>
-</p>
-
-</body>
-</html>
+{% endblock %}
