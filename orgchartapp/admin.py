@@ -3,8 +3,15 @@ from django.contrib import admin
 from orgchartapp.models import Employee
 from orgchartapp.models import ReportingRelationship
 
+#class ReportingRelationshipInlineSupervisors(admin.StackedInline):
+class ReportingRelationshipInlineSupervisors(admin.TabularInline):
+	model   = ReportingRelationship
+	fk_name = 'employee'
+	extra   = 0
+	raw_id_fields = ('employee', 'supervisor')
 
-class ReportingRelationshipInline(admin.StackedInline):
+#class ReportingRelationshipInlineEmployees(admin.StackedInline):
+class ReportingRelationshipInlineEmployees(admin.TabularInline):
 	model   = ReportingRelationship
 	fk_name = 'supervisor'
 	extra   = 3
@@ -16,7 +23,7 @@ class EmployeeAdmin(admin.ModelAdmin):
 	fieldsets = [
 		(None,               {'fields': ['full_name', 'job_title', 'contractor', 'part_time_status']}),
 		]
-	inlines = [ReportingRelationshipInline]
+	inlines = [ReportingRelationshipInlineSupervisors, ReportingRelationshipInlineEmployees]
 	list_filter  = ['contractor', 'part_time_status']
 
 
