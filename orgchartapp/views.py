@@ -20,7 +20,7 @@ def byEmployee(request):
 	return HttpResponse(t.render(c))
 		
 def byReportingRelationship(request, manager_id):
-	reporting_relationship_list = ReportingRelationship.objects.filter(Q(supervisor_id = manager_id) | Q(employee_id = manager_id))
+	reporting_relationship_list = ReportingRelationship.objects.filter(Q(supervisor_id = manager_id) | Q(employee_id = manager_id)).order_by('dotted')
 	primary_supervisor_id = ReportingRelationship.objects.filter(Q(employee_id = manager_id))[0].supervisor_id
 	t = loader.get_template('orgchart/chart.html')
 	c = Context({
