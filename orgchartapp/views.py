@@ -12,7 +12,7 @@ def homepage(request):
 	return HttpResponse(t.render(c))
 
 def byEmployee(request):
-	employee_list = Employee.objects.all()
+	employee_list = Employee.objects.all().order_by('full_name')
 	t = loader.get_template('orgchart/employees.html')
 	c = Context({
 	'employee_list': employee_list,
