@@ -23,9 +23,16 @@ def byEmployee(request):
 
 @login_required
 def byReportingRelationship(request, manager_id):
+	supervisors_list = ReportingRelationship.objects.filter(Q(employee_id = manager_id))
 	reporting_relationship_list = ReportingRelationship.objects.filter(Q(supervisor_id = manager_id) | Q(employee_id = manager_id)).order_by('dotted', 'employee__full_name')
-	if (len(reporting_relationship_list) > 1):
-		primary_supervisor_id = ReportingRelationship.objects.filter(Q(employee_id = manager_id))[0].supervisor_id
+
+	if supervisors_list:
+		primary_supervisor_id = supervisors_list[0].supervisor_id
+	else:
+		manager_name_title = str(Employee.objects.get(Q(id = manager_id)))
+		return HttpResponse(manager_name_title + ' has no supervisor defined in the system.')
+	
+	if (len(reporting_relationship_list) > 0):
 		t = loader.get_template('orgchart/chart.html')
 		c = Context({
 		'primary_supervisor_id': primary_supervisor_id,
