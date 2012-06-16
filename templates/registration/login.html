@@ -24,8 +24,16 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+<br />
+<div class="password-reset-link">
+	<a href="/admin/password_reset/">Forgotten your password or username?</a>
+</div>
 <p>
-<em>Note:</em> The username='<strong>demo</strong>' and password='<strong>demo</strong>' combination only works on the
-<a href="http://demo.employeeware.org/">demo.employeeware.org</a> demonstration site set up for practice.
+<em>Note:</em>
+<ul>
+	<li>The username='<strong>demo</strong>' and password='<strong>demo</strong>' combination only works on the
+	<a href="http://demo.employeeware.org/">demo.employeeware.org</a> demonstration site set up for practice.
+	</li>
+</ul>
 </p>
 {% endblock %}
